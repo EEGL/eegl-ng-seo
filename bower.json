@@ -1,0 +1,29 @@
+{
+  "name": "eegl-ng-seo",
+  "version": "0.1.0",
+  "homepage": "https://github.com/EEGL/eegl-ng-seo",
+  "authors": [
+    "Balazs Szabo <balazs@eegl.me>"
+  ],
+  "description": "Seo service for Angular",
+  "main": "./eegl-ng-seo.js",
+  "dependencies": {
+    "angular": ">= 1.3.8"
+  },
+  "moduleType": [
+    "angularjs"
+  ],
+  "keywords": [
+    "angular",
+    "seo",
+    "eegl"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
