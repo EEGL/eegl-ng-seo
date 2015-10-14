@@ -1,3 +1,5 @@
+'use strict'
+
 /*
  * eegl-ng-seo
  * 
@@ -9,11 +11,24 @@
 angular.module('eegl-ng-seo', [])
   .service('PageTitle', function() {
     var title = 'Loading site...'
-    var titlePrefix = ''
+    var globalTitle = ''
+    var position
+    var seperator = ' | '
     return {
+      config: function (settings) {
+        if( settings.position )    { position = settings.position }
+        if( settings.seperator ) { seperator = settings.seperator }
+        if( settings.globalTitle ) { globalTitle = settings.globalTitle }
+      },
       title: function() { return title; },
-      setTitle: function(newTitle) { title = titlePrefix + newTitle },
-      setGlobalTitle: function(title) { titlePrefix = title }
+      setTitle: function(newTitle) {
+        if( position === 'prefix' ) {
+          title = globalTitle + seperator + newTitle
+        } else {
+          title = newTitle + seperator + globalTitle 
+        }
+      },
+      setGlobalTitle: function(title) { globalTitle = title }
     }
   })
   .service('MetaInformation', function() {
