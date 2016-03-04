@@ -1,6 +1,6 @@
 #eegl-ng-seo
 
-Seo service for Angular 1.3.x
+Seo service for Angular 1
 
 ## Get Started
 
@@ -20,17 +20,28 @@ Set `<title>` and `<meta tags>`:
 
 ```html
 <title ng-bind="PageTitle.title()"></title>
-<meta name="description" content="{{ MetaInformation.metaDescription() }}">
-<meta name="keywords" content="{{ MetaInformation.metaKeywords() }}">
+<meta name="description" content="{{ MetaInformation.getMetaDescription() }}">
+<meta name="keywords" content="{{ MetaInformation.getMetaKeywords() }}">
+```
+
+In your application config:
+
+```js
+angular.module('app')
+  .config(config)
+
+  function config(PageTitleProvider) {
+    PageTitleProvider.config({
+      globalTitle: 'Sitetitle',
+      seperator: ' | ',
+      position: 'postfix'
+    })
+  }
 ```
 
 In your application controller:
 
 ```js
-PageTitle.setGlobalTitle( 'Sitetitle | ' )
-$scope.PageTitle = PageTitle
-$scope.MetaInformation = MetaInformation
-
 // UI router change state
 $rootScope.$on('$stateChangeSuccess', function (event, toState) {
   // Update meta tags from states' custom data
